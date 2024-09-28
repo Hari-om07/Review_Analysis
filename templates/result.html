@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1 class="text-center">Sentiment Analysis Results</h1>
+    <div class="card mt-4">
+        <div class="card-body">
+            <h4 class="card-title">Sentiment Summary</h4>
+            <p class="card-text">
+                <strong>Positive:</strong> {{ summary.positive }}<br>
+                <strong>Negative:</strong> {{ summary.negative }}<br>
+                <strong>Neutral:</strong> {{ summary.neutral }}<br>
+            </p>
+        </div>
+    </div>
+
+    <h3 class="mt-5">Detailed Review Sentiments</h3>
+    <div class="list-group mt-3">
+        {% for result in results %}
+            <div class="list-group-item list-group-item-action">
+                <strong>Review:</strong> {{ result.review }}<br>
+                <strong>Sentiment:</strong> {{ result.sentiment.sentiment }}
+            </div>
+        {% endfor %}
+    </div>
+
+    <a href="{{ url_for('upload_file') }}" class="btn btn-secondary mt-4">Go Back</a>
+{% endblock %}
